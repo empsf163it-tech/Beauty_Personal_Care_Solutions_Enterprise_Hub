@@ -526,6 +526,12 @@ button, input, select, textarea {
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .feature-card::before, .detail-card::before {
   content: "";
   position: absolute;
@@ -598,23 +604,39 @@ button, input, select, textarea {
   color: #879489;
 }
 
-.feature-card h3 {
-  font: 700 1.35rem / 1.3 var(--font-display);
-  margin: 12px 0;
+.feature-card .card-kicker {
+  margin: 0 0 10px 0;
 }
 
-.feature-card p:not(.card-kicker), .detail-card p {
+.feature-card h3 {
+  font: 700 1.35rem / 1.3 var(--font-display);
+  margin: 0 0 14px 0;
+}
+
+.feature-card p:not(.card-kicker) {
+  margin: 0;
   font-size: 0.92rem;
   color: #aeb9b0;
 }
 
-.feature-card a, .text-link {
+.detail-card p {
+  font-size: 0.92rem;
+  color: #aeb9b0;
+}
+
+.feature-card a, .text-link, .feature-link {
   display: inline-flex;
   gap: 10px;
   color: var(--green);
   font-size: 13px;
   font-weight: 700;
   margin-top: 14px;
+}
+
+.feature-card a, .feature-card .feature-link {
+  margin-top: auto;
+  padding-top: 24px;
+  align-self: flex-start;
 }
 
 .cta-band {
@@ -2025,7 +2047,7 @@ h1, h2, h3 { -webkit-text-stroke: 0; }
 .feature-card:hover p:not(.card-kicker), .detail-card:hover p, .detail-card:hover li, .team-card:hover p, .road-step:hover .road-card p,
 .menu-item:hover small, .steps li:hover p, .faq-list details:hover p, .vs-card:hover li { color: #f1f7f2; }
 .feature-card:hover .card-kicker, .menu-item:hover .menu-time { color: var(--green); }
-.text-link:hover, .feature-card a:hover { color: #d4ffc9; }
+.text-link:hover, .feature-card a:hover, .feature-card .feature-link:hover { color: #d4ffc9; }
 .faq-list summary:hover { color: var(--green); }
 .road-step:hover .road-dot { background: var(--green); color: #04100a; -webkit-text-stroke: 1px #04100a; }
 .menu-item:hover .menu-text b, .team-card:hover h3, .road-step:hover .road-card b { color: #ffffff; }
