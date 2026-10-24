@@ -38,12 +38,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Booking form date constraint
+  // Booking form date constraint and picker trigger
   const dateInput = document.getElementById("date");
   if (dateInput) {
     const today = new Date();
     const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
     dateInput.min = localDate;
+
+    const datePickerBtn = document.querySelector(".date-picker-btn");
+    if (datePickerBtn) {
+      datePickerBtn.addEventListener("click", () => {
+        if (typeof dateInput.showPicker === "function") {
+          dateInput.showPicker();
+        } else {
+          dateInput.focus();
+        }
+      });
+    }
   }
 
   // Booking form preview

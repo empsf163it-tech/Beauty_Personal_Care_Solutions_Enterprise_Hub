@@ -1,7 +1,8 @@
 /* BeautyOS — Dark Galaxy, Neon Green, Metallic Grey Design System */
-@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Orbitron:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
+  color-scheme: dark;
   --bg: #080b0a;
   --panel: #101512;
   --panel2: #151b17;
@@ -13,7 +14,8 @@
   --purple: #b17cff;
   --font-logo: 'Nothing You Could Do', cursive;
   --font-display: 'Nothing You Could Do', cursive;
-  --font-body: 'Nothing You Could Do', cursive;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'Nothing You Could Do', cursive;
   --header-height: 82px;
   --header-height-mobile: 70px;
 }
@@ -839,14 +841,76 @@ button, input, select, textarea {
 .step.active {
   background: var(--green);
   border-color: var(--green);
-  color: #071007;
+  color: #04100a !important;
+  font-weight: 800;
 }
 
 .step small {
   font-size: 12px;
   white-space: nowrap;
-  color: #a7b3a8;
-  font-weight: 500;
+  color: #cdd7ce;
+  font-weight: 600;
+}
+
+.step.active small {
+  color: #04100a !important;
+  font-weight: 700;
+}
+
+/* Service Preview banner inside booking panel */
+.booking-service-preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  margin: 0 0 16px;
+  border-radius: 14px;
+  background: rgba(140, 255, 114, 0.06);
+  border: 1px solid rgba(140, 255, 114, 0.22);
+  text-align: left;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.booking-service-preview:hover {
+  border-color: rgba(140, 255, 114, 0.45);
+  box-shadow: 0 6px 20px rgba(81, 237, 118, 0.1);
+}
+
+.booking-preview-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex: none;
+  border: 1px solid rgba(140, 255, 114, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.booking-preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.booking-preview-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  color: var(--green);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.booking-preview-title {
+  font-size: 15px;
+  color: #f3f7f2;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .booking-panel label, .contact-form label {
@@ -866,6 +930,84 @@ button, input, select, textarea {
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Custom dropdown arrow for all select elements */
+.booking-panel select, .contact-form select, select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%238cff72' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px 18px;
+  padding-right: 44px !important;
+  cursor: pointer;
+}
+
+.booking-panel select:hover, .contact-form select:hover {
+  border-color: rgba(140, 255, 114, 0.45);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23a1ff84' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Date Field Wrap & Prominent Vector Calendar Icon */
+.date-field-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.date-field-wrap input[type="date"] {
+  width: 100%;
+  color-scheme: dark !important;
+  padding-right: 48px !important;
+  cursor: pointer;
+}
+
+.date-picker-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  color: var(--green);
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.2s ease, filter 0.2s ease, color 0.2s ease;
+}
+
+.date-picker-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  stroke: var(--green);
+}
+
+.date-field-wrap:hover .date-picker-btn,
+.date-picker-btn:hover {
+  color: #a1ff84;
+  transform: translateY(-50%) scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(140, 255, 114, 0.8));
+}
+
+/* Transparent native picker overlay so clicking on or near the icon opens the browser date popup */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .booking-panel input:focus, .booking-panel select:focus, .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
@@ -1293,29 +1435,83 @@ button, input, select, textarea {
   }
 }
 
-/* ===== Global font enforcement: font-family: 'Nothing You Could Do', cursive; ===== */
-html, body, *, *::before, *::after, button, input, select, textarea, option, h1, h2, h3, h4, h5, h6, p, a, span, small, b, strong, li, label {
-  font-family: 'Nothing You Could Do', cursive !important;
+/* ===== Typography: Elements > 20px use previous font family --font-logo: 'Nothing You Could Do', cursive ===== */
+h1, h2, h3, h4, h5, h6,
+.hero h1, .page-hero h1, .contact-copy h1,
+.section-heading h2, .cta-band h2, .image-feature h2, .about-copy h2, .concept-panel h2, .faq-list h2, .visit-copy h2, .follow-steps h2,
+.feature-card h3, .vs-card h3, .biz-body h3, .day-card h3, .team-card h3, .tool-tile h3, .footer-news h3, .visit-card h3, .detail-card h3, .principle h3, .booking-panel h3, .contact-form h3,
+.menu-text b, .steps b, .road-card b, .spot-metrics strong, .spotlight-copy blockquote, .vs-badge, .step-num, .road-dot,
+.stats-strip strong, .quote-mark,
+.brand, .brand span, .footer .brand, .site-footer .brand {
+  font-family: var(--font-logo) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0;
+  font-synthesis: none;
 }
-/* Font only ships in regular weight; avoid fake-bold smearing */
-body { font-synthesis: none; font-size: 18px; }
-h1, h2, h3, strong, b, .button, .brand, .eyebrow, .card-kicker { font-weight: 400 !important; }
-/* Cursive needs normal tracking (previous tight tracking was for Orbitron) */
-.hero h1, .page-hero h1, .contact-copy h1 { letter-spacing: 0; line-height: 1.05; }
-.section-heading h2, .cta-band h2, .image-feature h2, .about-copy h2, .concept-panel h2 { letter-spacing: 0; }
-.eyebrow { letter-spacing: 1.5px; font-size: 14px; }
-.nav-links a { font-size: 17px; }
-.button { font-size: 17px; }
-.button-small { font-size: 15px; }
-.lead { font-size: 1.3rem; }
-.feature-card p:not(.card-kicker), .detail-card p { font-size: 17px; }
-.detail-card ul, .principle p, .principle b { font-size: 16px; }
-.booking-panel label, .contact-form label { font-size: 15px; }
-.booking-panel input, .booking-panel select, .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; }
-.card-kicker, .form-note, .step small, .floating-tag small, .contact-detail small, .footer small, .footer > div a, .footer p, .trust-line, .booking-photo-caption, .stats-strip span { font-size: 14px; }
-.floating-tag b, .contact-detail b { font-size: 16px; }
-.nav-links a { font-size: 17px; }
-.footer .brand { font-size: 2rem; }
+
+.hero h1, .page-hero h1, .contact-copy h1 {
+  line-height: 1.05;
+}
+
+.section-heading h2, .cta-band h2, .image-feature h2, .about-copy h2, .concept-panel h2 {
+  line-height: 1.15;
+}
+
+/* Readable UI & Body Typography for elements 20px and below */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-kicker {
+  font-family: var(--font-body);
+  letter-spacing: 1.8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.button-small { font-size: 14px; }
+.lead { font-family: var(--font-body); font-size: 1.2rem; line-height: 1.6; }
+.feature-card p:not(.card-kicker), .detail-card p { font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.detail-card ul, .principle p, .principle b { font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.vs-card li, .biz-body li { font-family: var(--font-body); font-size: 16px; }
+.booking-panel label, .contact-form label { font-family: var(--font-body); font-size: 14px; font-weight: 600; }
+.booking-panel input, .booking-panel select, .contact-form input, .contact-form select, .contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+}
+.form-note, .step small, .floating-tag small, .contact-detail small, .footer small, .footer p, .trust-line, .booking-photo-caption, .stats-strip span {
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+.step { font-family: var(--font-body); font-size: 15px; }
+.step small { font-family: var(--font-body); font-size: 14px; }
+.floating-tag b, .contact-detail b { font-family: var(--font-body); font-size: 16px; font-weight: 700; }
+.footer .brand { font-size: 2.2rem; }
 
 /* ===== Center alignment for all main sections (header & footer unchanged) ===== */
 main { text-align: center; }
@@ -1575,10 +1771,37 @@ main .page-hero h1 { font-size: clamp(3.4rem, 8vw, 6.6rem); }
 
 /* --- Features: Versus --- */
 .versus { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; }
-.vs-card { padding: 34px 30px; border-radius: 22px; border: 1px solid var(--line); }
-.vs-card h3 { font-size: 1.9rem; margin: 0 0 18px; }
-.vs-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.vs-card li { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 17px; }
+.vs-card {
+  padding: 34px 30px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.vs-card h3 { font-size: 1.9rem; margin: 0 0 20px; }
+.vs-card ul,
+.vs-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: fit-content;
+  max-width: 100%;
+  text-align: left;
+}
+.vs-card li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 12px;
+  font-size: 17px;
+  width: 100%;
+}
 .vs-icon { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 14px; flex: none; }
 .vs-bad { background: linear-gradient(145deg, rgba(40,18,22,.7), rgba(14,10,11,.9)); border-color: rgba(255,120,130,.28); }
 .vs-bad h3 { color: #ff9aa4; }
@@ -1741,22 +1964,23 @@ main .page-hero h1 { font-size: clamp(3.4rem, 8vw, 6.6rem); }
   main .hero-visual { height: min(520px, calc(100vh - var(--header-height) - 40px)); }
 }
 
-/* --- Stronger, clearer text (font ships in one thin weight) --- */
-body { -webkit-text-stroke: .35px currentColor; }
-h1, h2, h3 { -webkit-text-stroke: 0; }
-small, label, .eyebrow, .card-kicker, .form-note, .trust-line, .menu-text small, .stats-strip span, .floating-tag small, .chip small,
-.step small, .booking-photo-caption, .contact-detail small, .footer small, .footer p, .footer > div a, .spot-by small, .spot-metrics span, .team-role {
-  -webkit-text-stroke: .7px currentColor;
+/* --- Clean, crisp modern typography rendering --- */
+body, button, input, select, textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+h1, h2, h3 { -webkit-text-stroke: 0; }
+
 /* Primary solid buttons: crisp dark ink on neon green background */
-.button:not(.button-ghost) { color: #041007 !important; -webkit-text-stroke: .6px #041007 !important; }
-.button:not(.button-ghost):hover { color: #041007 !important; -webkit-text-stroke: .6px #041007 !important; filter: brightness(1.05) saturate(1.15); }
+.button:not(.button-ghost) { color: #041007 !important; font-weight: 700; }
+.button:not(.button-ghost):hover { color: #041007 !important; filter: brightness(1.05) saturate(1.15); }
 
 /* Ghost buttons: luminous high-contrast text and glowing border, always visible on dark background */
 .button.button-ghost,
 .button-ghost {
   color: #f5faf5 !important;
-  -webkit-text-stroke: .45px currentColor !important;
+  font-weight: 600;
   background: rgba(12, 18, 14, 0.85) !important;
   border: 1.5px solid rgba(140, 255, 114, 0.45) !important;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), inset 0 0 10px rgba(140, 255, 114, 0.05) !important;
@@ -1774,7 +1998,6 @@ small, label, .eyebrow, .card-kicker, .form-note, .trust-line, .menu-text small,
 .button.button-ghost:hover,
 .button-ghost:hover {
   color: #ffffff !important;
-  -webkit-text-stroke: .5px #ffffff !important;
   background: rgba(140, 255, 114, 0.18) !important;
   border-color: var(--green) !important;
   box-shadow: 0 0 28px rgba(140, 255, 114, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5) !important;
@@ -1786,15 +2009,14 @@ small, label, .eyebrow, .card-kicker, .form-note, .trust-line, .menu-text small,
   background: var(--green) !important;
   border-color: var(--green) !important;
   color: #041007 !important;
-  -webkit-text-stroke: .6px #041007 !important;
 }
 
-.nav-links a:not(.button), .brand { -webkit-text-stroke: .5px currentColor; }
+.nav-links a:not(.button) { -webkit-text-stroke: 0; font-weight: 500; }
 .brand { -webkit-text-stroke: 0; }
 .muted { color: #c6d0c7; }
 .lead { color: #dbe4dc; }
 .card-kicker, .contact-detail small, .floating-tag small, .chip small, .menu-text small, .spot-by small { color: #c3cfc5; }
-.trust-line, .stats-strip span, .footer p, .footer > div a, .footer small, .form-note, .step small, .principle p, .spot-metrics span { color: #dbe4dc !important; }
+.trust-line, .stats-strip span, .footer p, .footer > div a:not(.social-link), .footer small, .form-note, .step:not(.active) small, .principle p, .spot-metrics span { color: #dbe4dc !important; }
 .feature-card p:not(.card-kicker), .detail-card p, .detail-card ul, .about-copy > p:not(.eyebrow), .faq-list details p, .road-card p, .steps p, .team-card > p:last-child { color: #d0dad1; }
 .nav-links a:not(.button) { color: #dfe8e0; }
 .nav-links a:not(.button):hover, .nav-links a:not(.button).active { color: var(--green); }
@@ -1832,21 +2054,92 @@ small, label, .eyebrow, .card-kicker, .form-note, .trust-line, .menu-text small,
 .faq-list summary:hover::after { background: rgba(140,255,114,.3); }
 .faq-list details p { text-align: left; padding: 0 28px 22px; }
 
-/* --- Booking step indicator: labels no longer overlap the circles --- */
-.step { width: auto; min-width: 36px; height: 38px; padding: 0 14px; border-radius: 999px; gap: 8px; white-space: nowrap; font-size: 15px; }
-.step small { font-size: 14px; }
-.step.active small { color: #04100a; }
+/* --- Booking step indicator: high contrast and bold labels --- */
+.step {
+  width: auto;
+  min-width: 36px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(193, 214, 197, 0.25);
+  background: rgba(22, 29, 23, 0.7);
+  color: #cdd7ce;
+  font-weight: 700;
+}
+.step small {
+  font-size: 14px;
+  color: #cdd7ce !important;
+  font-weight: 600;
+}
+.step.active {
+  background: var(--green) !important;
+  border-color: var(--green) !important;
+  color: #04100a !important;
+  font-weight: 800;
+  box-shadow: 0 0 18px rgba(140, 255, 114, 0.45);
+}
+.step.active small {
+  color: #04100a !important;
+  font-weight: 700;
+  -webkit-text-stroke: 0.35px #04100a;
+}
 .form-progress > i { min-width: 10px; }
 
-/* --- Contact: aligned details + social icons --- */
+/* --- Contact & Footer: aligned details + social icons --- */
 main .contact-detail { width: min(100%, 400px); margin-left: auto; margin-right: auto; justify-content: flex-start; }
 .contact-detail b { font-size: 16px; }
 .follow-us { margin-top: 30px; }
 .follow-us .eyebrow { margin-bottom: 14px; font-size: 15px; }
 .social-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-.social-link { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(140,255,114,.4); background: rgba(140,255,114,.08); color: var(--green); transition: transform .3s, background .3s, color .3s, box-shadow .3s; }
-.social-link svg { width: 24px; height: 24px; }
-.social-link:hover { transform: translateY(-5px) scale(1.06); background: var(--green); color: #04100a; box-shadow: 0 10px 28px rgba(140,255,114,.4); }
+.social-link {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(140, 255, 114, 0.4);
+  background: rgba(140, 255, 114, 0.08);
+  color: var(--green) !important;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.social-link svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  transition: stroke 0.25s ease, fill 0.25s ease, color 0.25s ease;
+}
+.social-link:hover,
+.footer-social .social-link:hover {
+  transform: translateY(-5px) scale(1.08);
+  background: var(--green) !important;
+  border-color: var(--green) !important;
+  color: #04100a !important;
+  box-shadow: 0 10px 28px rgba(140, 255, 114, 0.55);
+}
+.social-link:hover svg,
+.footer-social .social-link:hover svg {
+  stroke: #04100a !important;
+  color: #04100a !important;
+}
+.social-link:hover svg path,
+.social-link:hover svg rect,
+.social-link:hover svg circle,
+.footer-social .social-link:hover svg path,
+.footer-social .social-link:hover svg rect,
+.footer-social .social-link:hover svg circle {
+  stroke: #04100a !important;
+}
+.social-link:hover svg [fill="currentColor"],
+.footer-social .social-link:hover svg [fill="currentColor"] {
+  fill: #04100a !important;
+  stroke: none !important;
+}
 
 /* =====================================================================
    FOOTER (brand, social, newsletter), MAP, BACK TO TOP
@@ -1924,14 +2217,61 @@ main .contact-detail { width: min(100%, 400px); margin-left: auto; margin-right:
 .biz-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) brightness(.85); transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .4s; }
 .biz-card:hover img { transform: scale(1.08); filter: saturate(1.05) brightness(.7); }
 .biz-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(5,8,6,.96) 0%, rgba(5,8,6,.75) 38%, rgba(5,8,6,.1) 75%); }
-.biz-body { position: relative; z-index: 2; width: 100%; padding: 22px 18px 24px; }
+.biz-body {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 22px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 .biz-body h3 { margin: 0 0 6px; font-size: 1.9rem; color: var(--green); text-shadow: 0 0 18px rgba(140,255,114,.4); }
 .biz-body p { margin: 0 0 8px; font-size: 17px; line-height: 1.45; color: #f1f7f2; }
-.biz-body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 16px; color: #e3ece4; }
-.biz-body li::before { content: "\2713"; color: var(--green); margin-right: 8px; }
+.biz-body ul,
+.biz-list {
+  list-style: none;
+  margin: 8px auto 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 16px;
+  color: #e3ece4;
+  width: fit-content;
+  max-width: 100%;
+  text-align: left;
+}
+.biz-body li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  line-height: 1.4;
+}
+.biz-body li::before {
+  content: "\2713";
+  color: var(--green);
+  margin-right: 10px;
+  flex: none;
+  font-weight: 700;
+}
 @media (hover: hover) {
-  .biz-body ul { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s ease, opacity .4s ease; }
-  .biz-card:hover .biz-body ul { max-height: 140px; opacity: 1; }
+  .biz-body ul,
+  .biz-list {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .5s ease, opacity .4s ease, margin .4s ease;
+  }
+  .biz-card:hover .biz-body ul,
+  .biz-card:hover .biz-list {
+    max-height: 160px;
+    opacity: 1;
+    margin-top: 10px;
+  }
 }
 
 .day-grid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
